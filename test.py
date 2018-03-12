@@ -23,17 +23,27 @@ def parseURL(lang, lexCat, wordLimit):
     url = 'https://od-api.oxforddictionaries.com:443/api/v1/wordlist/' + lang + '/lexicalCategory=' + lexCat.lower() + '?offset=' + offset + '&limit=' + str(wordLimit)
     return url
 
+def makeRequest(lang, lexCat, wordLimit, app_id, app_key):
+
+    return requests.get(parseURL(lang, lexCat, wordLimit), headers={'app_id': app_id, 'app_key': app_key}).json()['results'][0].get('word', '')
+
 def sentenceGenerator():
     # TODO: generate strings to display in a sensical way.
+    returnString = ""
 
-#Gets the JSON response from given URL
-r = requests.get(parseURL('en', 'adjective', '1'), headers = {'app_id': app_id, 'app_key': app_key})
+    # Gets the JSON response from given URL
+    adjective = makeRequest('en', 'adjective', '1', app_id, app_key)
+    noun = makeRequest('en', 'noun', '1', app_id, app_key)
+    preposition = makeRequest('en', 'preposition', '1', app_id, app_key)
+    adjective = makeRequest('en', 'adjective', '1', app_id, app_key)
 
-adjective = r.json()['results'][0].get('word', '')
-print(adjective)
+    return returnString
 
 
-#Run code below to check amounts of words in categories
+print(sentenceGenerator())
+
+
+#Run code below to check amounts of words in categories. Switch the last param
 #url = 'https://od-api.oxforddictionaries.com:443/api/v1/wordlist/en/lexicalCategory=verb'
 #r = requests.get(url, headers = {'app_id': app_id, 'app_key': app_key})
 #print(r.json()['metadata'])
