@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>GitHub - Peter Rydberg</title>
+      <link rel="stylesheet" type="text/css" href="css.css" />
+
+      <script src="SimileGenerator.js"></script>
+  </head>
+
+  <body>
+
+    <h1>Simile Generator</h1>
+
+    <div id="container">
+      <form id="authform">
+
+          Oxford app_id<br>
+          <input id="app_id" type="text"><br>
+          Oxford app_key<br>
+          <input id="app_key" type="text"><br>
+          Thing you want to similify<br>
+          <input id="simileVar" type="text"><br><br>
+          <input type="submit" value="Generate simile!" onclick="getAuth(document.getElementById('app_id').value, document.getElementById('app_key').value, document.getElementById('simileVar').value)">
+
+      </form>
+    </div>
+
+  </body>
+</html>
