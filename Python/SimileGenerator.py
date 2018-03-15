@@ -29,7 +29,6 @@ def makeRequest(lang, lexCat, wordLimit, wordFreq, app_id, app_key):
     return requests.get(parseURL(lang, lexCat, wordLimit, wordFreq), headers={'app_id': app_id, 'app_key': app_key}).json()['results'][0].get('word', '')
 
 def simileGenerator(simileWord):
-    # TODO: generate strings to display in a sensical way.
     returnString = ""
 
     # Gets the JSON response from given URL
